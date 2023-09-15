@@ -1,0 +1,119 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  background-image: url(/images/homepage_bg.jpg);
+  background-position: center;
+  background-size: cover;
+  padding-left: 8%;
+  padding-right: 8%;
+  box-sizing: border-box;
+}
+
+.navbar {
+  height: 12%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 70px;
+  cursor: pointer;
+  padding-top: 5px;
+}
+.menu-icon {
+  width: 30px;
+  cursor: pointer;
+  margin-left: 40px;
+}
+nav {
+  flex: 1;
+  text-align: right;
+}
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 60px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  height: 88%;
+}
+.col {
+  flex-basis: 50%;
+}
+h1 {
+  color: #fff;
+  font-size: 60px;
+}
+p {
+  color: #fff;
+  line-height: 15px;
+  font-size: 11px;
+}
+button {
+  width: 180px;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 12px 0;
+  transition: transform 0.5s;
+  border: 0;
+  border-radius: 20px;
+  outline: none;
+  margin-top: 30px;
+  cursor: pointer;
+  background-image: url(/images/homepage_explore.jpg);
+}
+.card {
+  width: 230px;
+  height: 200px;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 15px 25px;
+  /* margin: 10px 15px; */
+  margin: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-image: url(/images/homepage_card.jpg);
+  background-position: center;
+  background-size: cover;
+  transition: transform 0.5s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card:hover {
+  transform: translateY(-20px);
+}
+h5 {
+  color: #fff;
+  text-shadow: 0 0 5px #999;
+  margin: 40% 30%;
+  align-items: center;
+  text-align: center;
+}
+.card p {
+  text-shadow: 0 0 15px #000;
+}
+.col1 {
+  padding-right: 100px;
+}
+.ip-title {
+  padding-bottom: 30px;
+}
+.ip-desc {
+  font-size: medium;
+}
+button:hover {
+  transform: scale(1.15);
+}
