@@ -1,0 +1,7 @@
+.home_projects_win95_buttons {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    padding-left: 20px;
+    justify-content: space-between;
+}
