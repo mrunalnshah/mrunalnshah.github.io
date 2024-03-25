@@ -1,0 +1,15 @@
+.myHeadingInfo{
+    text-align: center;
+}
+#myName{
+    margin-bottom: 0px;
+}
+
+#myTitle{
+    margin-top: 0px;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
