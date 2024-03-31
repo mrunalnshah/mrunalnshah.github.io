@@ -17,62 +17,59 @@ a{
 
 /*NAVIGATION BAR*/
 .navigationBar {
-    background-color: #333;
-    overflow: hidden;
-  }
+  background-color: #333;
+  overflow: hidden;
+  display: flex; /* Added */
+  justify-content: space-between; /* Added */
+  align-items: center; /* Added */
+}
 
-  .navigationBar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    margin: 0px;
-  }
+.navigationBar a {
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  margin: 0px;
+}
 
-  .navigationBar a:hover {
-    background-color: #ddd;
-    color: black;
-  }
+.navigationBar a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
-  .navigationBar a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-  .navContact{
-    background-color: #04AA6D;
-    
-  }
+.navigationBar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
 
-  .navigationBar .icon {
-    display: none;
-  }
+.navLinksMiddle{
+  display: flex; /* Added */
+}
 
-  .navLinksMiddle{
-    padding-left: 33%;
-    
-  }
+.navLinksMiddle > div {
+  margin: 0 10px; /* Adjusted */
+}
 
-  .navLinksRight{
-    float: right;
-    padding-right: 50px;
-  }
+.navLinksRight{
+  padding-right: 50px;
+}
 
-  #home{
-    padding-left: 50px;
-    float: left;
-  }
-/*NAVIGATION BAR*/
+#home{
+  padding-left: 20px; /* Adjusted */
+}
 
-
+.navContact{
+  background-color: #04AA6D;
+}
 
 /*my Profile*/
 .profileContainer {
   display: flex;
   align-items: center;
-  margin-top: 20px; 
+  margin-top: 20px;
+  margin-left: 50px; /* Adjusted */
 }
 
 #myPara {
@@ -80,21 +77,15 @@ a{
   margin-left: 20px;
   margin-right: 60px;
   margin-top: 0px;
-  padding-top: 0px;
-  border: 2px solid black; 
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px; 
-  margin-bottom: 80px;
+  padding: 20px;
+  border: 2px solid black;
+  flex: 1; /* Added */
 }
 
 img {
   border-radius: 60px;
   width: 160px;
-  margin-left: 50px;
 }
-/*my Profile*/
 
 /*SWP*/
 .swp {
@@ -109,14 +100,6 @@ img {
   margin: 0 5px;
 }
 
-#skills{
-  border: 2px solid black; 
+#skills, #work, #project {
+  border: 2px solid black;
 }
-#work{
-  border: 2px solid black; 
-}
-#project{
-  border: 2px solid black; 
-  margin-right: 60px;
-}
-/*SWP*/
