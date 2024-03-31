@@ -69,4 +69,54 @@ a{
 
 
 /*my Profile*/
+.profileContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px; 
+}
+
+#myPara {
+  font-family: 'Roboto';
+  margin-left: 20px;
+  margin-right: 60px;
+  margin-top: 0px;
+  padding-top: 0px;
+  border: 2px solid black; 
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+  margin-bottom: 80px;
+}
+
+img {
+  border-radius: 60px;
+  width: 160px;
+  margin-left: 50px;
+}
 /*my Profile*/
+
+/*SWP*/
+.swp {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 220px;
+  margin-top: 0px;
+}
+
+.section {
+  flex: 1;
+  margin: 0 5px;
+}
+
+#skills{
+  border: 2px solid black; 
+}
+#work{
+  border: 2px solid black; 
+}
+#project{
+  border: 2px solid black; 
+  margin-right: 60px;
+}
+/*SWP*/
