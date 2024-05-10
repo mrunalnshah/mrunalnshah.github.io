@@ -1,122 +1,247 @@
-.myHeadingInfo{
+  /* Ensures correct alignment and spacing for mobile */
+  @media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .col-12 { 
+      text-align: center; /* Ensure text and image are centered on mobile */
+    }
+
+    #typing-animation {
+      padding-top: 20px; /* Adds spacing between image and text */
+    }
+  }
+
+  /* Custom Styles */
+  body {
     font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+  }
+
+  .myHeadingInfo{
+      font-family: 'Roboto';
+      text-align: center;
+  }
+  #myName{
+      margin-bottom: 0px;
+  }
+
+  #myTitle{
+      margin-top: 0px;
+      text-decoration: none;
+  }
+
+
+  img.rounded-circle {
+    /* Ensures the image is circular */
+    border-radius: 50%;
+  }
+
+  .profile-container {
     text-align: center;
-}
-#myName{
-    margin-bottom: 0px;
-}
-
-#myTitle{
-    margin-top: 0px;
-    text-decoration: none;
-}
-a{
-    text-decoration: none;
-    color: black;
-}   
-
-/*NAVIGATION BAR*/
-.navigationBar {
-    background-color: #333;
-    overflow: hidden;
+    padding: 20px;
   }
 
-  .navigationBar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
+  .profile-image {
+    /* Sets consistent image size and alignment */
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Ensures the image is circular */
+    display: inline-block;
+  }
+
+  .profile-description {
+    /* Adds margin for better spacing */
+    margin-left: 20px;
+  }
+
+  .border {
+    border: 1px solid #333; /* Adds a border to the sections */
+    border-radius: 5px; /* Adds rounded corners */
+    padding: 20px; /* Ensures consistent padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+  }
+
+  /* Adjusting text and other elements */
+  .text-center {
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    margin: 0px;
   }
 
-  .navigationBar a:hover {
-    background-color: #ddd;
-    color: black;
+  footer {
+    text-align: center;
+    padding: 20px;
+  }
+  /* Custom Styles for Skills Section */
+  .skills-list {
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
   }
 
-  .navigationBar a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-  .navContact{
-    background-color: #04AA6D;
-    
+  /* Additional adjustments for alignment or spacing, if needed */
+  .skills-list li {
+    padding-bottom: 10px; /* Adds some space between list items */
   }
 
-  .navigationBar .icon {
-    display: none;
+  /* Custom style for horizontal line */
+  hr {
+    border: 0; /* Removes default border */
+    height: 2px; /* Sets the thickness */
+    background-color: #333; /* Sets the color */
+    margin: 20px 0; /* Adds space around the line */
   }
 
-  .navLinksMiddle{
-    padding-left: 33%;
-    
+
+  /* Animation for typing and deleting text */
+  @keyframes typing {
+    0% { width: 0; }
+    70% { width: 100%; }
+    85% { width: 100%; }
+    100% { width: 0; }
   }
 
-  .navLinksRight{
-    float: right;
-    padding-right: 50px;
+  @keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: black; }
   }
 
-  #home{
-    padding-left: 50px;
-    float: left;
+/* Ensures the container has a consistent width */
+#typing-container {
+  min-width: 200px; /* Adjust as needed for your content */
+  height: 40px; /* Maintain consistent height for the container */
+}
+
+/* Keep the text in a fixed area with a transparent border to prevent layout shifts */
+.typing-area {
+  display: inline-block;
+  border-right: 2px solid transparent; /* Transparent border to prevent content jump */
+  white-space: nowrap; /* Ensure text stays in one line */
+  overflow: hidden; /* Prevent overflow issues */
+  transition: all 0.5s; /* Smooth transitions to prevent jumps */
+}
+
+.typing-area.blinking {
+  border-color: black; /* Visible border for the cursor effect */
+  animation: blink 1s step-end infinite; /* Blinking animation for the cursor */
+}
+
+/* Blinking animation for the cursor */
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+
+  
+  /* Common styles for the typing effect */
+  .typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden; /* Ensures the text overflows with a hidden effect */
+    border-right: 2px solid black; /* Visual cue for the cursor */
+    animation: blink 0.5s step-end infinite; /* Blinking cursor effect */
   }
-/*NAVIGATION BAR*/
+
+  /* Animation for the first text (Machine Learning Engineer) */
+  .typing-1 {
+    width: 0; /* Start with no text visible */
+    animation: typing 4s steps(20, end) infinite, /* Typing animation */
+              blink 0.5s step-end infinite; /* Blinking cursor */
+    animation-delay: 0s; /* Delay before the animation starts */
+  }
+
+  /* Animation for the second text (Software Engineer) */
+  .typing-2 {
+    width: 0; /* Start with no text visible */
+    animation: typing 4s steps(20, end) infinite, /* Typing animation */
+              blink 0.5s step-end infinite; /* Blinking cursor */
+    animation-delay: 4s; /* Delay before the second animation starts */
+  }
 
 
 
-/*my Profile*/
-.profileContainer {
-  display: flex;
-  align-items: center;
-  margin-top: 20px; 
-}
+  /*Light Dark Mode*/
 
-#myPara {
-  font-family: 'Roboto';
-  margin-left: 20px;
-  margin-right: 60px;
-  margin-top: -71px;
-  padding-top: 0px;
-  border: 2px solid black; 
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px; 
-  margin-bottom: 80px;
-}
+  /* Styles for the custom theme switch */
+  .theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 34px; /* Adjust the size as needed */
+    height: 20px;
+  }
 
-img {
-  border-radius: 60px;
-  width: 160px;
-  margin-left: 50px;
-}
-/*my Profile*/
+  .theme-switch input {
+    opacity: 0; /* Hide the checkbox */
+    width: 0;
+    height: 0;
+  }
 
-/*SWP*/
-.swp {
-  display: flex;
-  justify-content: space-around;
-  margin-left: 220px;
-  margin-top: 0px;
-}
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black; /* Default background for light mode */
+    transition: 0.4s; /* Smooth transition for animations */
+  }
 
-.section {
-  flex: 1;
-  margin: 0 5px;
-}
+  .slider.round {
+    border-radius: 34px; /* Round the slider for a smooth appearance */
+  }
 
-#skills{
-  border: 2px solid black; 
-}
-#work{
-  border: 2px solid black; 
-}
-#project{
-  border: 2px solid black; 
-  margin-right: 60px;
-}
-/*SWP*/
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    border-radius: 50%; /* Circular knob */
+    background-color: white; /* Default knob color */
+    transition: 0.4s;
+    top: 3px;
+    left: 3px; /* Knob position in light mode */
+  }
+
+  input:checked + .slider {
+    background-color: white; /* Background for dark mode */
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(14px); /* Shift knob to indicate dark mode */
+    background-color: black; /* Knob color in dark mode */
+  }
+
+
+
+
+  /* Default light mode styles */
+  .light-mode {
+    background-color: rgb(229, 255, 241); /* Light background */
+    color: black; /* Dark text */
+  }
+
+  .light-mode .navbar {
+    background-color: #90ffa6; /* Dark navbar in light mode */
+  }
+
+  .light-mode .footer {
+    background-color: #90ffa6; /* Dark footer in light mode */
+    color: white; /* Light text in footer */
+  }
+
+  /* Dark mode styles */
+  .dark-mode {
+    background-color: #171717; /* Dark background */
+    color: white; /* Light text */
+  }
+
+  .dark-mode .navbar {
+    background-color: #1f1f1f; /* Dark navbar */
+  }
+
+  .dark-mode .footer {
+    background-color: #1f1f1f; /* Dark footer */
+    color: white; /* Light text in footer */
+  }
+
+
+  /* COLORS */
