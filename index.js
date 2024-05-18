@@ -1,7 +1,7 @@
 function toggleMenu() {
     var nav = document.getElementById("navigationBar");
     var links = nav.querySelectorAll("a:not(.icon)");
-    links.forEach(function(link) {
+    links.forEach(function (link) {
         link.style.display = link.style.display === "block" ? "none" : "block";
     });
 }
@@ -60,27 +60,25 @@ setTimeout(typeEffect, typingSpeed);
 
 
 
-// Get the checkbox input element
-const checkbox = document.getElementById("checkbox");
+// JavaScript to handle the theme toggle
+document.getElementById("theme-toggle").addEventListener("click", function () {
+    const body = document.body;
+    const themeToggleBtn = document.getElementById("theme-toggle");
 
-// Get the body element to change the theme class
-const body = document.body;
+    if (body.classList.contains("light-mode")) {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+        themeToggleBtn.innerHTML = "Wanna see light?";
+        themeToggleBtn.classList.remove("light-mode");
+        themeToggleBtn.classList.add("dark-mode");
+    } else {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+        themeToggleBtn.innerHTML = "Get into darkness!";
+        themeToggleBtn.classList.remove("dark-mode");
+        themeToggleBtn.classList.add("light-mode");
+    }
+});
 
-// Function to toggle between light and dark mode
-function toggleTheme() {
-  if (checkbox.checked) {
-    body.classList.remove("light-mode");
-    body.classList.add("dark-mode");
-  } else {
-    body.classList.remove("dark-mode");
-    body.classList.add("light-mode");
-  }
-}
-
-// Attach the toggle function to the checkbox's change event
-checkbox.addEventListener("change", toggleTheme);
-
-// Ensure the initial checkbox state matches the current theme
-checkbox.checked = body.classList.contains("dark-mode");
 
 
