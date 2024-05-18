@@ -61,7 +61,20 @@ setTimeout(typeEffect, typingSpeed);
 
 
 // JavaScript to handle the theme toggle
-document.getElementById("theme-toggle").addEventListener("click", function () {
+document.addEventListener("DOMContentLoaded", function() {
+    const body = document.body;
+    const themeToggleBtn = document.getElementById("theme-toggle");
+
+    if (body.classList.contains("dark-mode")) {
+        themeToggleBtn.innerHTML = "Wanna see light?";
+        themeToggleBtn.classList.add("dark-mode");
+    } else {
+        themeToggleBtn.innerHTML = "Get into darkness!";
+        themeToggleBtn.classList.add("light-mode");
+    }
+});
+
+document.getElementById("theme-toggle").addEventListener("click", function() {
     const body = document.body;
     const themeToggleBtn = document.getElementById("theme-toggle");
 
@@ -79,6 +92,7 @@ document.getElementById("theme-toggle").addEventListener("click", function () {
         themeToggleBtn.classList.add("light-mode");
     }
 });
+
 
 
 

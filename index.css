@@ -372,6 +372,22 @@ input:checked+.slider:before {
   color: #00ff2a;
   border: 1px solid #ff0000;
 }
+/* Styling for the toggle button */
+.btn-toggle {
+  transition: all 0.3s ease;
+}
+
+.btn-toggle.dark-mode {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.btn-toggle.light-mode {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+}
 
 /* Colors for dark and light modes */
 /*
