@@ -372,6 +372,7 @@ input:checked+.slider:before {
   color: #00ff2a;
   border: 1px solid #ff0000;
 }
+
 /* Styling for the toggle button */
 .btn-toggle {
   transition: all 0.3s ease;
@@ -387,6 +388,19 @@ input:checked+.slider:before {
   background-color: #007bff;
   color: #fff;
   border: 1px solid #007bff;
+}
+
+/* Custom styles for the navbar-toggler-icon */
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+}
+
+.light-mode .navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(9, 76, 0, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
+}
+
+.dark-mode .navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(102, 252, 241, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
 }
 
 /* Colors for dark and light modes */
