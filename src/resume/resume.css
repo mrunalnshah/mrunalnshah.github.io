@@ -408,15 +408,16 @@ input:checked+.slider:before {
     background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="rgba(102, 252, 241, 1)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
 }
 
-.dark-mode .btn{
+.dark-mode .btn {
     font-weight: bold;
-    color:#45A29E;
+    color: #45A29E;
     background-color: #000;
     border-color: #66FCF1;
 }
-.light-mode .btn{
+
+.light-mode .btn {
     font-weight: bold;
-    color:#3c9234;
+    color: #3c9234;
     background-color: #81fe9a;
     border-color: #66FCF1;
 }
@@ -434,12 +435,13 @@ input:checked+.slider:before {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
 }
 
-#pdf-title{
+#pdf-title {
     font-weight: bold;
 }
 
