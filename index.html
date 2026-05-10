@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>mrunalnshah</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @font-face {
+        font-family: "AlphaBrights";
+        src: url("assets/alpha_brights/Alpha Brights.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        max-width: 700px;
+        margin: auto;
+        padding: 40px 20px;
+        background: #f2efe7;
+        color: #111;
+        font-family: "IBM Plex Mono", monospace;
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      ::selection {
+        background: #111;
+        color: #f2efe7;
+      }
+
+      nav {
+        margin-bottom: 50px;
+      }
+
+      nav a {
+        margin-right: 18px;
+        color: #444;
+        text-decoration: none;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .dropdown {
+        display: inline-block;
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 22px;
+        left: 0;
+        background: #f2efe7;
+        min-width: 160px;
+        padding-top: 6px;
+      }
+
+      .dropdown-content a {
+        display: block;
+        margin: 0;
+        padding: 4px 0;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      img {
+        width: 280px;
+        height: 280px;
+        object-fit: cover;
+        margin-bottom: 18px;
+      }
+
+      h2,
+      h3 {
+        font-weight: 500;
+        margin-top: 28px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        color: #333;
+        margin: 8px 0;
+      }
+
+      .signature {
+        font-family: "AlphaBrights";
+        font-size: 2.1rem;
+        margin-left: 4px;
+        line-height: 1;
+      }
+
+      .news p {
+        margin: 4px 0;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 28px 18px;
+          font-size: 14px;
+        }
+
+        nav a {
+          display: inline-block;
+          margin-bottom: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="">projects</a>
+
+      <a href="https://mrunalnshah.substack.com/">blogs</a>
+
+      <div class="dropdown">
+        <a href="">learn with me</a>
+
+        <div class="dropdown-content">
+          <a href="">algorithms</a>
+          <a href="">learning ai</a>
+        </div>
+      </div>
+    </nav>
+
+    <img src="assets/prof_pic.jpg" alt="mrunal" />
+
+    <h2 style="margin-bottom: 0">bello globo,</h2>
+
+    <p style="margin-top: 2px">
+      I am <span class="signature">mrunalnshah</span>.
+    </p>
+
+    <p>
+      I read, code, listen, eat and play games. I love talking and working on
+      anything BANG! I love travelling and especially trekking to snowy
+      mountains. I am spiritual but have no peace, so consider me normal and let
+      us connect...
+    </p>
+
+    <h3>currently,</h3>
+
+    <p>
+      pursuing bachelors in computer science. recently completed my internship
+      as AI/ML Engineer Intern at Silver Touch Technologies.
+    </p>
+
+    <h3>news</h3>
+
+    <div class="news">
+      <p>
+        [09 - 05 - 2026] Working on
+        <a href="https://github.com/WildeWulf/WildeStalker">WildeStalker</a>, an
+        open source Logging system to capture keys, mouse and display in sync.
+      </p>
+    </br> <!-----------------------BREAK----------------------------------------->
+      <p>
+        [03 - 05 - 2026] Completed my internship as AI/ML Engineer Intern at
+        Silver Touch.
+      </p>
+    </div>
+
+    <!--
+      <h3>announcement</h3>
+
+      <div class="announcement">
+        <p>Nothing as of now...</p>
+      </div>
+    -->
+  </body>
+</html>
