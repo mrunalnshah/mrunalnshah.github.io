@@ -15,161 +15,18 @@
       rel="stylesheet"
     />
 
-    <style>
-      @font-face {
-        font-family: "AlphaBrights";
-        src: url("assets/alpha_brights/Alpha Brights.woff") format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
-
-      body {
-        max-width: 700px;
-        margin: auto;
-        padding: 40px 20px;
-        background: #f2efe7;
-        color: #111;
-        font-family: "IBM Plex Mono", monospace;
-        line-height: 1.7;
-        font-size: 15px;
-      }
-
-      ::selection {
-        background: #111;
-        color: #f2efe7;
-      }
-
-      nav {
-        margin-bottom: 50px;
-      }
-
-      nav a {
-        margin-right: 18px;
-        color: #444;
-        text-decoration: none;
-      }
-
-      nav a:hover {
-        text-decoration: underline;
-      }
-
-      .dropdown {
-        display: inline-block;
-        position: relative;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 22px;
-        left: 0;
-        background: #f2efe7;
-        min-width: 160px;
-        padding-top: 6px;
-      }
-
-      .dropdown-content a {
-        display: block;
-        margin: 0.2;
-        padding: 4px 0 4px 12px;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-
-      img {
-        width: 280px;
-        height: 280px;
-        object-fit: cover;
-        margin-bottom: 18px;
-      }
-
-      h2,
-      h3 {
-        font-weight: 500;
-        margin-top: 28px;
-        margin-bottom: 8px;
-      }
-
-      p {
-        color: #333;
-        margin: 8px 0;
-      }
-
-      .signature {
-        font-family: "AlphaBrights";
-        font-size: 2.1rem;
-        margin-left: 4px;
-        line-height: 1;
-      }
-
-      .news p {
-        margin: 4px 0;
-      }
-
-      .bang {
-        position: relative;
-        cursor: help;
-        border-bottom: 1px dotted #555;
-      }
-
-      .bang-tooltip {
-        visibility: hidden;
-        opacity: 0;
-
-        position: absolute;
-        left: 0;
-        top: 28px;
-
-        background: #111;
-        color: #f2efe7;
-
-        font-size: 12px;
-        padding: 6px 10px;
-
-        white-space: nowrap;
-
-        transition: opacity 0.2s ease;
-
-        z-index: 10;
-      }
-
-      .bang:hover .bang-tooltip {
-        visibility: visible;
-        opacity: 1;
-      }
-
-      @media (max-width: 600px) {
-        body {
-          padding: 28px 18px;
-          font-size: 14px;
-        }
-
-        nav a {
-          display: inline-block;
-          margin-bottom: 8px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <nav>
-      <a href="https://mrunalnshah.github.io/workaholic/">projects</a>
+      <a href="index.html" aria-current="page">Home</a>
 
-      <a href="https://mrunalnshah.substack.com/">blogs</a>
+      <a href="https://mrunalnshah.github.io/ai-from-first-principles/">AI from First Principles </a>
 
-      <!--
-        <div class="dropdown">
-          <a href="">learn with me</a>
+      <a href="https://mrunalnshah.substack.com/">Blogs </a>
 
-          <div class="dropdown-content">
-            <a href="">algorithms</a>
-            <a href="">learning ai</a>
-          </div>
-        </div>
-      -->
+      <a href="projects.html">Projects </a>
     </nav>
 
     <img src="assets/prof_pic.jpg" alt="mrunal" />
@@ -180,11 +37,11 @@
       I am <span class="signature">mrunalnshah</span>.
     </p>
 
-    <p>
+    <p class="bio">
       I read, code, listen, eat, and lose hours playing games. I'm the kind of
       person who gets obsessed with ideas, projects, late-night conversations,
       and anything that feels alive — anything with a little
-      <span class="bang"
+      <span class="bang" tabindex="0"
         >BANG! <span class="bang-tooltip"> (qu)Bit, Atoms, Neurons, Genes</span>
       </span>
 
@@ -196,18 +53,27 @@
     <h3>currently,</h3>
 
     <p>
-      upcoming graduate student of Artificial Intelligence at <a href="https://www.northeastern.edu/"> Northeastern University </a> with focus on Machine Learning, Reinforcement Learning and Natural Language Processing. Recently completed my internship
-      as AI/ML Engineer Intern at Silver Touch Technologies working on user-compliance and violation detection AI models.
+      Master's student in Artificial Intelligence at <a href="https://www.northeastern.edu/">Northeastern University</a>, with a focus on working with messy data, semantic model building, and multimodal architectures spanning Computer Vision, NLP, and Reinforcement Learning.
     </p>
 
-    <h3>news</h3>
+    <p>
+      Recently completed an internship as an AI/ML Engineer Intern at Silver Touch Technologies, where I worked on AI models for user compliance and violation detection. During my bachelor's, I worked on computer vision for pneumonia detection from chest X-ray images and curated two datasets.
+    </p>
+
+    <h3>news,</h3>
 
     <div class="news">
-      <br />
       <p>
-        [03 - 05 - 2026] Completed my internship as AI/ML Engineer Intern at
+        [September - 09 - 2026] Started M.S. in AI at Northeastern University.
+      </p>
+      <br />
+
+      <p>
+        [May - 15 - 2026] Completed my internship as AI/ML Engineer Intern at
         Silver Touch.
       </p>
+      <br />
+
     </div>
 
     <!--
