@@ -1,11 +1,12 @@
-// The nav at the top of every page. Put this where the nav should appear,
-// with the path to this file from the page:
+// The top of every page: a small line of social links, then the nav. Put
+// this where they should appear, with the path to this file from the page:
 //
 //   <script src="nav.js"></script>          pages in the site root
 //   <script src="../../nav.js"></script>    pages in cv/<section>/
 //
-// To add, remove, or rename a tab, edit LINKS; every page picks it up. The
-// tab for the page you're on is marked aria-current="page" (underlined).
+// To add, remove, or rename a tab or a social link, edit LINKS or SOCIAL;
+// every page picks it up. The tab for the page you're on is marked
+// aria-current="page" (underlined).
 
 (function () {
   // [label, href relative to the site root, folder whose pages also count as
@@ -15,9 +16,13 @@
     ["AI from First Principles", "https://mrunalnshah.github.io/ai-from-first-principles/"],
     ["Blogs", "https://mrunalnshah.substack.com/"],
     ["Projects", "projects.html"],
+    ["CV", "cv.html", "cv/"],
+  ];
+
+  // [label, href]
+  const SOCIAL = [
     ["GitHub", "https://github.com/mrunalnshah/"],
     ["LinkedIn", "https://linkedin.com/in/mrunalnshah"],
-    ["CV", "cv.html", "cv/"],
   ];
 
   const script = document.currentScript;
@@ -36,5 +41,11 @@
     return `<a href="${new URL(href, root).href}"${current}>${label}</a>`;
   });
 
-  script.insertAdjacentHTML("beforebegin", `<nav>\n${links.join("\n")}\n</nav>`);
+  const social = SOCIAL.map(([label, href]) => `<a href="${href}">${label}</a>`);
+
+  script.insertAdjacentHTML(
+    "beforebegin",
+    `<div class="social">\n${social.join("\n")}\n</div>\n` +
+      `<nav>\n${links.join("\n")}\n</nav>`
+  );
 })();
