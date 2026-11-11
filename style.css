@@ -234,6 +234,105 @@ p {
   display: block;
 }
 
+/* the top of an entry's own page */
+.cv-back {
+  margin-bottom: 24px;
+}
+
+.cv-photo {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: cover;
+  margin: 0 0 16px;
+  display: block;
+}
+
+/* projects.html: parts that hide and show from their heading, e.g. "[-] research," */
+.cv-part > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.cv-part > summary::-webkit-details-marker {
+  display: none;
+}
+
+.cv-part > summary::before {
+  content: "[-] ";
+  color: #555;
+}
+
+.cv-part:not([open]) > summary::before {
+  content: "[+] ";
+}
+
+.cv-part > summary h3 {
+  display: inline-block;
+}
+
+/* featured entries: a full-width photo above the text */
+.cv-feature {
+  margin: 12px 0 30px;
+}
+
+.cv-feature-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin: 0 0 10px;
+  display: block;
+}
+
+/* everything else: a two-column gallery of tiles */
+.cv-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px 20px;
+  margin: 14px 0 24px;
+}
+
+.cv-tile-img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  margin: 0 0 8px;
+  display: block;
+}
+
+.cv-feature p,
+.cv-tile p {
+  margin: 2px 0;
+}
+
+/* the default thumbnail: shown whole on its own background color, whatever the box shape */
+.cv-placeholder {
+  object-fit: contain;
+  background: #e6e1d6;
+}
+
+.cv-small {
+  font-size: 13px;
+}
+
+/* "all  Safety AI  Medical Imaging": plain-text buttons, the chosen one underlined */
+.cv-filters button {
+  margin: 0 14px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: #555;
+  cursor: pointer;
+}
+
+.cv-filters button:hover,
+.cv-filters button[aria-pressed="true"] {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* the global img rule sizes the profile photo; images in details keep their own size */
 .cv-body img {
   width: auto;
@@ -255,6 +354,14 @@ p {
   .cv-card {
     grid-template-columns: 96px minmax(0, 1fr);
     column-gap: 14px;
+  }
+
+  .cv-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cv-feature-img {
+    height: 170px;
   }
 
   .cv-thumb {

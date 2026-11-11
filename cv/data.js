@@ -9,6 +9,8 @@
 //   id          folder for its entries' pages: cv/<id>/
 //   title       heading on cv.html
 //   thumbnails  optional: true shows each entry as [thumbnail | text]
+//   projectsPage  optional: true also lists the section on projects.html,
+//               and its entry pages link back there as well as to the CV
 //   entries     the entries, each with:
 //
 //     id         name unique within its section, also the file name of its
@@ -25,16 +27,22 @@
 //     end        same format; leave it out while ongoing ("present")
 //     date       instead of start/end, for one-off things like an award
 //     summary    optional: a line or two for cv.html (may contain HTML)
-//     thumbnail  optional, in thumbnail sections: image path from the site
-//                root, e.g. "assets/cv/pneumonia.jpg". Without one,
-//                `defaultThumbnail` (below) is shown.
-//     links      optional: { code: "https://...", paper: "https://..." },
-//                shown as [code] [paper]
+//     thumbnail  optional: image path from the site root, e.g.
+//                "assets/cv/pneumonia.jpg". Shown at the top of the entry's
+//                page, and in thumbnail sections, where entries without one
+//                show `defaultThumbnail` (below).
+//     links      optional: { paper: "https://...", code: "https://..." },
+//                shown in that order as [paper] [code]. Research usually
+//                has paper and code; projects live (if any) and code.
 //     page       true if the entry has its own page; cv.html then links to
 //                it with [learn more →]
+//     featured   optional, in `projectsPage` sections: true also shows the
+//                entry at the top of projects.html as a large card. Two or
+//                three is plenty.
 //
-// To give an entry its own page: copy any entry page into cv/<section id>/,
-// rename it to <entry id>.html, replace the details, and set `page: true`.
+// To give an entry its own page: copy cv/_template.html into
+// cv/<section id>/, rename it to <entry id>.html, replace the details, and
+// set `page: true`.
 //
 // To add a section, add it to `sections` below; only sections whose entries
 // have pages need a folder.
@@ -84,6 +92,7 @@ const CV = {
       id: "research",
       title: "research",
       thumbnails: true,
+      projectsPage: true,
       entries: [
         {
           id: "pneumonia-detection",
@@ -132,6 +141,7 @@ const CV = {
       id: "projects",
       title: "projects",
       thumbnails: true,
+      projectsPage: true,
       entries: [
         // {
         //   id: "some-project",
