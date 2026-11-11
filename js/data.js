@@ -2,7 +2,9 @@
 // <head>; the other scripts in js/ use the two functions below, so where the
 // data lives and how its paths are read is decided only here.
 //
-//   loadData("cv")      -> a promise of the parsed data/cv.json
+//   loadData("cv")      -> a promise of the parsed data/cv.json; a name may
+//                          include a folder and ".json", e.g.
+//                          "pages/silver-touch.json"
 //   siteURL("cv.html")  -> a full URL for a path written relative to the
 //                          site root, as every path in data/ is
 //
@@ -16,7 +18,7 @@ const siteURL = (function () {
 })();
 
 function loadData(name) {
-  const file = `data/${name}.json`;
+  const file = `data/${name.replace(/\.json$/, "")}.json`;
   return fetch(siteURL(file))
     .then((response) => {
       if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);

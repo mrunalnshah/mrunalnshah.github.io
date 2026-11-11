@@ -1,0 +1,55 @@
+[
+  {
+    "heading": "situation,",
+    "text": "Compliance teams review policy and legal documents clause by clause, by hand. It's slow, it doesn't scale to long documents, and a single missed clause can carry real legal risk."
+  },
+  {
+    "heading": "task,",
+    "text": "Build the first pass of that review: a system that reads a legal PDF, checks it against the team's own rules, also catches risky clauses no rule mentions, and shows its reasoning so a reviewer can trust each flag. I owned it end to end, from data labeling and model training to API deployment."
+  },
+  {
+    "heading": "action,",
+    "text": "I built it as one pipeline: read the document, clean it, check every sentence two ways, then explain and report what it found.",
+    "image": "assets/cv/silver-touch/overview.svg",
+    "caption": "A simplified view of the system. Shaded boxes are models, dashed boxes are what the user provides. Internal documents, rules, and settings are left out."
+  },
+  {
+    "subheading": "reading and cleaning documents",
+    "text": "PDFs become structured text, with OCR for scanned pages, and every word keeps its position on the page so violations can be highlighted in the original. Then the text is cleaned and split into sentences:",
+    "image": "assets/cv/silver-touch/preprocessing.svg"
+  },
+  {
+    "subheading": "checking against your rules",
+    "text": "Each rule is written in JSON as a rule text and a risk factor. A two-stage matcher checks it: sBERT semantic retrieval shortlists the most relevant sentences (I compared it with SimCSE, and sBERT retrieved better), then DeBERTa-v3 NLI judges each one against the rule. A contradiction is a likely violation, and the risk score is its probability times the rule's risk factor.",
+    "image": "assets/cv/silver-touch/rule-matching.svg"
+  },
+  {
+    "subheading": "checking with no rules at all",
+    "text": "For risky clauses no rule mentions, I hand-labeled 2,000+ sentences and fine-tuned LegalBERT to sort each one into four severity classes.",
+    "image": "assets/cv/silver-touch/auto-detection.svg"
+  },
+  {
+    "subheading": "explaining and reporting",
+    "text": "A local LLM (Ollama) explains each violation in plain language, and optional add-ons flag risk words and numeric data such as amounts and percentages. I shipped it as a FastAPI service with a config-driven rule engine. Results come back as an annotated PDF, with each explanation attached as a comment, plus a structured report in a Streamlit interface."
+  },
+  {
+    "heading": "result,",
+    "items": [
+      "85% test accuracy for rule-based detection (sBERT + DeBERTa NLI)",
+      "75% test accuracy for auto-detection across 4 severity classes (LegalBERT)",
+      "preprocessing checked against a gold-standard set of 10 short legal documents (1–2 pages each): text extraction, cleaning, and sentence splitting",
+      "end-to-end detection checked on 1 large, full-length legal document",
+      "compliance teams can add new rules in config, without engineering support"
+    ]
+  },
+  {
+    "heading": "stack,",
+    "items": [
+      "language and training: Python, PyTorch",
+      "models: sBERT, DeBERTa-v3-base (NLI), LegalBERT",
+      "explanations: Ollama (local LLM)",
+      "text: OCR, NLTK",
+      "serving: FastAPI on uvicorn, Streamlit"
+    ]
+  }
+]

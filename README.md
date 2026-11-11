@@ -18,11 +18,12 @@ their content from JSON; opening `index.html` directly won't work.
 
 All text lives in `data/`. You don't need to touch the HTML or JS.
 
-| File             | Controls                                        |
-| ---------------- | ----------------------------------------------- |
-| `data/site.json` | nav tabs and social links                       |
-| `data/home.json` | home page: photo, bio, currently, news          |
-| `data/cv.json`   | CV, projects page, and each entry's detail page |
+| File              | Controls                                              |
+| ----------------- | ----------------------------------------------------- |
+| `data/site.json`  | nav tabs and social links                             |
+| `data/home.json`  | home page: photo, bio, currently, news                |
+| `data/cv.json`    | CV and projects page: every entry, in short           |
+| `data/pages/`     | long "learn more" pages, one file per entry           |
 
 Every field is explained, with examples, in [data/README.md](data/README.md).
 Images go in `assets/`.

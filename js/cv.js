@@ -7,8 +7,9 @@
 //     id is its section id (or "featured"), so projects.html#research
 //     leads straight to it.
 //   entry.html?section=<id>&id=<id>, with <div id="cv-entry">: one entry's
-//     own page, from its `details`. Lists link here for every entry that
-//     has details.
+//     own page, from its `details`: written in cv.json, or, for a long page,
+//     in its own file such as data/pages/silver-touch.json. Lists link here
+//     for every entry that has details.
 //
 // Everything meant to be customized is in data/cv.json; this file only
 // draws it.
@@ -64,8 +65,8 @@
     return items.length ? `<p class="cv-meta">${items.join(" ")}</p>` : "";
   }
 
-  // The URL of an entry's own page, or null if it has neither details nor a
-  // quote to show there.
+  // The URL of an entry's own page, or null if it has neither details (a
+  // list, or a page file's name) nor a quote to show there.
   function pageURL(section, entry) {
     if (!entry.quote && !(entry.details && entry.details.length > 0)) return null;
     return siteURL(`entry.html?section=${section.id}&id=${entry.id}`);
@@ -298,8 +299,19 @@
       ${factsHTML(entry, "h2")}
       ${linksHTML(entry.links)}
       ${quoteHTML(entry)}
-      <article class="cv-body">${detailsHTML(entry.details || [])}</article>`;
+      <article class="cv-body"></article>`;
     container.addEventListener("click", onFigureClick);
+
+    const body = container.querySelector(".cv-body");
+    detailsOf(entry).then((details) => { body.innerHTML = detailsHTML(details); });
+  }
+
+  // A promise of the entry's details: the list itself, or the list in the
+  // page file it names (a path under data/, e.g. "pages/silver-touch.json").
+  function detailsOf(entry) {
+    return typeof entry.details === "string"
+      ? loadData(entry.details)
+      : Promise.resolve(entry.details || []);
   }
 
   // "[← cv] [← projects]": back to every page that lists this entry.

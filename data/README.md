@@ -93,12 +93,22 @@ A list left empty (`[]`) hides its heading.
 | `links`     | optional: `{ "paper": "https://...", "code": "https://..." }`, shown as `[paper] [code]` in that order. Research usually has paper and code; projects live and code. A link left as `""` is a placeholder and stays hidden until it has a URL |
 | `featured`  | optional, in `projectsPage` sections: `true` puts it at the top of the projects page as a large card |
 | `quote`     | optional: 2–3 lines in your own words (the people, what it taught you), shown centered in quotes at the top of the entry's page, signed with `author`. `""` hides it |
-| `details`   | optional: the entry's own page. Having details or a quote is what adds `[learn more →]` |
+| `details`   | optional: the entry's own page, as a list of blocks, or, for a long page, the name of its page file, e.g. `"pages/silver-touch.json"`. Having details or a quote is what adds `[learn more →]` |
 
 ### details
 
-A list of blocks, shown in order on the entry's page. Each block can have
-any of these, shown in this order:
+A list of blocks, shown in order on the entry's page. A short list can sit
+right in cv.json; a long one (coursework, a project write-up) goes in its own
+file in `data/pages/`, named after the entry's `id`, so cv.json stays a short
+list:
+
+```json
+"details": "pages/silver-touch.json"
+```
+
+`data/pages/silver-touch.json` then holds just the list, `[ {...}, {...} ]`.
+
+Each block can have any of these, shown in this order:
 
 ```json
 "details": [
