@@ -135,6 +135,95 @@ p {
   opacity: 1;
 }
 
+/* cv: cv.html and the entry pages in cv/, drawn by cv/cv.js */
+.cv-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: 16px;
+  color: #333;
+}
+
+.cv-row h2 {
+  margin: 0;
+}
+
+.cv-title {
+  font-weight: 500;
+  color: #111;
+}
+
+.cv-meta {
+  color: #555;
+}
+
+.cv-entry {
+  margin: 14px 0 20px;
+}
+
+.cv-entry p {
+  margin: 2px 0;
+}
+
+/* a collapsible group within a section, e.g. "[+] AI/ML (3)" under projects */
+.cv-group {
+  margin: 6px 0;
+}
+
+.cv-group[open] {
+  margin-bottom: 20px;
+}
+
+.cv-group summary {
+  cursor: pointer;
+  color: #555;
+  list-style: none;
+}
+
+.cv-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.cv-group summary::before {
+  content: "[+] ";
+}
+
+.cv-group[open] summary::before {
+  content: "[-] ";
+}
+
+.cv-group summary:hover {
+  color: #111;
+}
+
+.cv-count {
+  color: #888;
+}
+
+/* entries in sections with `thumbnails: true`: [thumbnail | text] */
+.cv-card {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  column-gap: 20px;
+  align-items: start;
+}
+
+.cv-thumb {
+  width: 150px;
+  height: 110px;
+  object-fit: cover;
+  margin: 5px 0 0;
+  display: block;
+}
+
+/* the global img rule sizes the profile photo; images in details keep their own size */
+.cv-body img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
 @media (max-width: 600px) {
   body {
     padding: 28px 18px;
@@ -144,6 +233,16 @@ p {
   nav a {
     display: inline-block;
     margin-bottom: 8px;
+  }
+
+  .cv-card {
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 14px;
+  }
+
+  .cv-thumb {
+    width: 96px;
+    height: 70px;
   }
 }
 
