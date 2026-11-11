@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="220" viewBox="0 0 700 220"
+     font-family="IBM Plex Mono, Consolas, monospace" font-size="12" fill="#111">
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#111" />
+    </marker>
+  </defs>
+  <rect x="10" y="24" width="110" height="56" fill="none" stroke="#111" />
+  <text x="65.0" y="48.0" text-anchor="middle" font-weight="bold">sentences</text>
+  <text x="65.0" y="64.0" text-anchor="middle" fill="#555">from the PDF</text>
+  <rect x="10" y="140" width="110" height="56" fill="none" stroke="#111" stroke-dasharray="3 3" />
+  <text x="65.0" y="156.0" text-anchor="middle" font-weight="bold">rule (JSON)</text>
+  <text x="65.0" y="172.0" text-anchor="middle" fill="#555">text + risk</text>
+  <text x="65.0" y="188.0" text-anchor="middle" fill="#555">factor</text>
+  <path d="M120 52 H132 V110 H143" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <path d="M120 168 H132 V110 H143" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <rect x="144" y="62" width="125" height="96" fill="#e6e1d6" stroke="#111" />
+  <text x="206.5" y="90.0" text-anchor="middle" font-weight="bold">sBERT</text>
+  <text x="206.5" y="106.0" text-anchor="middle" fill="#555">similarity,</text>
+  <text x="206.5" y="122.0" text-anchor="middle" fill="#555">keep top-K over</text>
+  <text x="206.5" y="138.0" text-anchor="middle" fill="#555">a threshold</text>
+  <path d="M269 110 H292" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <rect x="293" y="62" width="125" height="96" fill="#e6e1d6" stroke="#111" />
+  <text x="355.5" y="82.0" text-anchor="middle" font-weight="bold">DeBERTa NLI</text>
+  <text x="355.5" y="98.0" text-anchor="middle" fill="#555">contradiction /</text>
+  <text x="355.5" y="114.0" text-anchor="middle" fill="#555">neutral /</text>
+  <text x="355.5" y="130.0" text-anchor="middle" fill="#555">entailment,</text>
+  <text x="355.5" y="146.0" text-anchor="middle" fill="#555">keep top-K</text>
+  <path d="M418 110 H441" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <rect x="442" y="62" width="115" height="96" fill="none" stroke="#111" />
+  <text x="499.5" y="98.0" text-anchor="middle" font-weight="bold">risk score</text>
+  <text x="499.5" y="114.0" text-anchor="middle" fill="#555">contradiction</text>
+  <text x="499.5" y="130.0" text-anchor="middle" fill="#555">× risk factor</text>
+  <path d="M557 110 H580" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <rect x="581" y="62" width="109" height="96" fill="#e6e1d6" stroke="#111" />
+  <text x="635.5" y="98.0" text-anchor="middle" font-weight="bold">Ollama</text>
+  <text x="635.5" y="114.0" text-anchor="middle" fill="#555">explains each</text>
+  <text x="635.5" y="130.0" text-anchor="middle" fill="#555">violation</text>
+</svg>

@@ -53,19 +53,21 @@
     return html;
   }
 
-  // "[learn more →] [paper] [code]".
+  // "[learn more →] [paper] [code]". A link left as "" is a placeholder and
+  // isn't shown until it has a URL.
   function linksHTML(links, moreHref) {
     const items = [];
     if (moreHref) items.push(`[<a href="${moreHref}">learn more →</a>]`);
     for (const [label, href] of Object.entries(links || {})) {
-      items.push(`[<a href="${siteURL(href)}">${label}</a>]`);
+      if (href) items.push(`[<a href="${siteURL(href)}">${label}</a>]`);
     }
     return items.length ? `<p class="cv-meta">${items.join(" ")}</p>` : "";
   }
 
-  // The URL of an entry's own page, or null if it has no details.
+  // The URL of an entry's own page, or null if it has neither details nor a
+  // quote to show there.
   function pageURL(section, entry) {
-    if (!entry.details || entry.details.length === 0) return null;
+    if (!entry.quote && !(entry.details && entry.details.length > 0)) return null;
     return siteURL(`entry.html?section=${section.id}&id=${entry.id}`);
   }
 
@@ -82,6 +84,26 @@
 
   function summaryHTML(entry) {
     return entry.summary ? `<p>${entry.summary}</p>` : "";
+  }
+
+  // A part of a page that hides and shows from its heading, e.g. "[-] education,"
+  // on cv.html or "[-] research," on projects.html. Starts open.
+  function partHTML(id, title, contents) {
+    return `
+      <details class="cv-part" id="${id}" open>
+        <summary><h3>${title},</h3></summary>
+        ${contents}
+      </details>`;
+  }
+
+  // The parts didn't exist when the browser looked for #research in the URL
+  // (e.g. from an entry page's back link), so go there now.
+  function showPartInURL() {
+    const target = location.hash && document.getElementById(location.hash.slice(1));
+    if (target) {
+      target.open = true;
+      target.scrollIntoView();
+    }
   }
 
   // Sections that have something to show, optionally only those matching.
@@ -129,22 +151,24 @@
       html += `<p class="cv-meta">[<a href="${siteURL(CV.pdf)}">pdf</a>]</p>`;
     }
 
+    // Each section hides and shows from its heading. Inside it, ungrouped
+    // entries are always shown; each group starts collapsed so the page stays
+    // short, and readers open only what interests them.
     for (const section of sectionsWithEntries()) {
-      html += `<h3>${section.title},</h3>`;
-      // Ungrouped entries are always shown; each group starts collapsed so
-      // the page stays short, and readers open only what interests them.
-      for (const [group, entries] of groupEntries(section.entries)) {
+      const contents = groupEntries(section.entries).map(([group, entries]) => {
         const list = entries.map((entry) => entryHTML(section, entry)).join("");
-        html += group
+        return group
           ? `<details class="cv-group">
                <summary>${group} <span class="cv-count">(${entries.length})</span></summary>
                ${list}
              </details>`
           : list;
-      }
+      }).join("");
+      html += partHTML(section.id, section.title, contents);
     }
 
     container.innerHTML = html;
+    showPartInURL();
   }
 
   // ---- projects.html -----------------------------------------------------
@@ -172,24 +196,18 @@
       ]);
     }
 
+    if (parts.length === 0) {
+      container.innerHTML = `<p class="cv-meta">Coming soon.</p>`;
+      return;
+    }
+
     const jump = parts.map(([id, title]) => `[<a href="#${id}">${title}</a>]`);
     container.innerHTML =
       `<p class="cv-meta">jump to: ${jump.join(" ")}</p>` +
-      parts.map(([id, title, contents]) => `
-        <details class="cv-part" id="${id}" open>
-          <summary><h3>${title},</h3></summary>
-          ${contents}
-        </details>`).join("");
+      parts.map(([id, title, contents]) => partHTML(id, title, contents)).join("");
 
     container.addEventListener("click", onProjectsClick);
-
-    // The parts didn't exist when the browser looked for #research in the
-    // URL (e.g. from an entry page's back link), so go there now.
-    const target = location.hash && document.getElementById(location.hash.slice(1));
-    if (target) {
-      target.open = true;
-      target.scrollIntoView();
-    }
+    showPartInURL();
   }
 
   // A large card: full-width photo, then title, section and dates, summary,
@@ -279,32 +297,112 @@
       ${entry.thumbnail ? `<img class="cv-photo" src="${siteURL(entry.thumbnail)}" alt="" />` : ""}
       ${factsHTML(entry, "h2")}
       ${linksHTML(entry.links)}
+      ${quoteHTML(entry)}
       <article class="cv-body">${detailsHTML(entry.details || [])}</article>`;
+    container.addEventListener("click", onFigureClick);
   }
 
   // "[← cv] [← projects]": back to every page that lists this entry.
   function backLinksHTML(section) {
-    const items = [`[<a href="${siteURL("cv.html")}">← cv</a>]`];
+    const hash = section.id ? `#${section.id}` : "";
+    const items = [`[<a href="${siteURL(`cv.html${hash}`)}">← cv</a>]`];
     if (section.projectsPage) {
       items.push(`[<a href="${siteURL(`projects.html#${section.id}`)}">← projects</a>]`);
     }
     return `<p class="cv-meta cv-back">${items.join(" ")}</p>`;
   }
 
-  // An entry's details: each block may have a heading, text (a paragraph or
-  // a list of them), items (a bulleted list), and an image with a caption,
-  // shown in that order.
+  // A few lines in the author's own words, centered above an entry's
+  // details: “...” — Mrunal Nirajkumar Shah. Hidden while `quote` is empty.
+  function quoteHTML(entry) {
+    if (!entry.quote) return "";
+    const by = CV.author ? `<p class="cv-quote-by">— ${CV.author}</p>` : "";
+    return `<blockquote class="cv-quote"><p>“${entry.quote}”</p>${by}</blockquote>`;
+  }
+
+  // An entry's details: each block may have a heading, a subheading (a
+  // smaller heading under it), text (a paragraph or a list of them), items
+  // (a bulleted list), and an image with a caption, shown in that order. The image links to itself; onFigureClick opens it in
+  // the viewer, and without JS the link still shows it full size.
   function detailsHTML(details) {
     return details.map((block) => {
       const paragraphs = [].concat(block.text || []);
       return [
         block.heading ? `<h3>${block.heading}</h3>` : "",
+        block.subheading ? `<h4>${block.subheading}</h4>` : "",
         ...paragraphs.map((p) => `<p>${p}</p>`),
         block.items ? `<ul>${block.items.map((item) => `<li>${item}</li>`).join("")}</ul>` : "",
-        block.image ? `<img src="${siteURL(block.image)}" alt="${block.caption || ""}" />` : "",
+        block.image
+          ? `<a href="${siteURL(block.image)}"><img src="${siteURL(block.image)}" alt="${block.caption || ""}" /></a>`
+          : "",
         block.caption ? `<p class="cv-meta">${block.caption}</p>` : "",
       ].join("");
     }).join("");
+  }
+
+  // ------------------------------------------------------------------------
+  // The figure viewer: a figure on an entry's page opens large over the page.
+  // Clicking the picture zooms in and out; clicking outside it, Esc, or
+  // [close] goes back. Ctrl-, Shift-, and middle-clicks still open a new tab.
+
+  let viewer; // the <dialog>, made on first use
+
+  function onFigureClick(event) {
+    const link = event.target.closest(".cv-body a");
+    const img = link && link.querySelector("img");
+    if (!img || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    event.preventDefault();
+    openViewer(link.href, img.alt);
+  }
+
+  function openViewer(src, alt) {
+    viewer = viewer || createViewer();
+    const img = viewer.querySelector("img");
+    img.classList.remove("zoomed");
+    img.classList.toggle("cv-fill", /\.svg$/i.test(src)); // drawings scale up sharply; photos would blur
+    img.style.width = "";
+    img.src = src;
+    img.alt = alt;
+    viewer.showModal();
+  }
+
+  function createViewer() {
+    const dialog = document.createElement("dialog");
+    dialog.className = "cv-viewer";
+    dialog.innerHTML = `
+      <div class="cv-viewer-bar cv-meta cv-small">
+        <span>click to zoom</span>
+        <button type="button">[close]</button>
+      </div>
+      <div class="cv-viewer-frame"><img alt="" /></div>`;
+    document.body.append(dialog);
+
+    const frame = dialog.querySelector(".cv-viewer-frame");
+    dialog.querySelector("img").addEventListener("click", (event) => toggleZoom(event, frame));
+    dialog.querySelector("button").addEventListener("click", () => dialog.close());
+    // A click on the backdrop lands on the dialog itself, outside its box.
+    dialog.addEventListener("click", (event) => {
+      const box = dialog.getBoundingClientRect();
+      const inside = event.clientX >= box.left && event.clientX <= box.right &&
+                     event.clientY >= box.top && event.clientY <= box.bottom;
+      if (!inside) dialog.close();
+    });
+    return dialog;
+  }
+
+  // Doubles the picture's size, keeping the clicked spot in the middle of the
+  // frame; a second click fits it back.
+  function toggleZoom(event, frame) {
+    const img = event.currentTarget;
+    const fitWidth = img.clientWidth;
+    const x = event.offsetX / img.clientWidth;
+    const y = event.offsetY / img.clientHeight;
+    const zoomed = img.classList.toggle("zoomed");
+    img.style.width = zoomed ? `${fitWidth * 2}px` : "";
+    if (zoomed) {
+      frame.scrollLeft = x * img.clientWidth - frame.clientWidth / 2;
+      frame.scrollTop = y * img.clientHeight - frame.clientHeight / 2;
+    }
   }
 
   // ------------------------------------------------------------------------

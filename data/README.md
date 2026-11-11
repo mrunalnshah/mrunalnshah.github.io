@@ -62,6 +62,7 @@ A list left empty (`[]`) hides its heading.
 
 - `pdf`: shows a `[pdf]` link on the CV; `""` hides it.
 - `defaultThumbnail`: the picture for entries without their own `thumbnail`.
+- `author`: your name, shown under each entry's `quote` as "— Name".
 - `sections`: shown on the CV in this order. A section with no entries is
   hidden.
 
@@ -89,9 +90,10 @@ A list left empty (`[]`) hides its heading.
 | `group`     | optional: a sub-group, e.g. `"Safety AI"`. Collapsible on the CV, a filter on the projects page |
 | `summary`   | optional: a line or two shown in lists                               |
 | `thumbnail` | optional: a picture, e.g. `"assets/cv/my-project.png"`               |
-| `links`     | optional: `{ "paper": "https://...", "code": "https://..." }`, shown as `[paper] [code]` in that order. Research usually has paper and code; projects live and code |
+| `links`     | optional: `{ "paper": "https://...", "code": "https://..." }`, shown as `[paper] [code]` in that order. Research usually has paper and code; projects live and code. A link left as `""` is a placeholder and stays hidden until it has a URL |
 | `featured`  | optional, in `projectsPage` sections: `true` puts it at the top of the projects page as a large card |
-| `details`   | optional: the entry's own page. Having details is what adds `[learn more →]` |
+| `quote`     | optional: 2–3 lines in your own words (the people, what it taught you), shown centered in quotes at the top of the entry's page, signed with `author`. `""` hides it |
+| `details`   | optional: the entry's own page. Having details or a quote is what adds `[learn more →]` |
 
 ### details
 
@@ -108,9 +110,41 @@ any of these, shown in this order:
 ```
 
 - `heading`: a sub-heading
+- `subheading`: a smaller heading, for steps inside a section (e.g. under "action,")
 - `text`: a paragraph, or a list of paragraphs
 - `items`: a bulleted list
 - `image` and `caption`: a picture and the line under it
+
+They show in that order, so a list split by semester is one block per
+semester, with only the first carrying the heading:
+
+```json
+{ "heading": "coursework,", "text": "Fall 2026", "items": ["EECE5644: ...", "CS5130: ..."] },
+{ "text": "Spring 2027", "items": ["..."] }
+```
+
+An architecture diagram, or any figure, is a block with an `image`, and it
+works in every section (experience, research, projects). Keep each entry's
+images in a folder named after its `id`:
+
+```json
+{ "heading": "architecture,", "image": "assets/cv/silver-touch/overview.svg", "caption": "How the parts connect." }
+```
+
+Any image format works (`.png`, `.jpg`, `.svg`). It shows at its own size,
+shrunk to fit the column (700px wide at most). To put text after a figure,
+start a new block without a heading.
+
+A story told STAR-style (situation, task, action, result) is four headings,
+with `subheading` blocks for the steps under action:
+
+```json
+{ "heading": "situation,", "text": "What was going on." },
+{ "heading": "task,", "text": "What you had to do." },
+{ "heading": "action,", "text": "How you did it, overall." },
+{ "subheading": "first step", "text": "...", "image": "assets/cv/<entry-id>/step.svg" },
+{ "heading": "result,", "items": ["a number", "what changed"] }
+```
 
 ## Examples
 

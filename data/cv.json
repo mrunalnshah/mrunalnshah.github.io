@@ -1,5 +1,6 @@
 {
   "pdf": "",
+  "author": "Mrunal Nirajkumar Shah",
   "defaultThumbnail": "assets/cv/default-thumbnail.svg",
 
   "sections": [
@@ -10,25 +11,134 @@
         {
           "id": "northeastern",
           "title": "Northeastern University",
-          "role": "M.S. in Artificial Intelligence",
+          "role": "M.S. in Artificial Intelligence (Machine Learning Concentration)",
           "start": "2026-09",
-          "summary": "Focus on messy data, semantic model building, and multimodal architectures across Computer Vision, NLP, and Reinforcement Learning.",
+          "summary": "",
           "details": [
-            { "heading": "coursework,", "items": ["TODO"] }
+            {
+              "heading": "coursework,",
+              "text": "Fall 2026",
+              "items": [
+                "EECE5644: Introduction to Machine Learning & Pattern Recognition by Prof. <a href='https://scholar.google.com/citations?user=GPIB5kUAAAAJ&hl=en'>Stratis Ioannidis</a>",
+                "CS5130: Applied Programming & Data Processing by Prof. <a href='https://scholar.google.com/citations?user=sHriRmwAAAAJ&hl=en'>Jin Yu</a>"
+              ]
+            },
+            {
+              "text": "Spring 2027",
+              "items": [
+                "EECE7397: Advanced Machine Learning by Prof. <a href='https://scholar.google.com/citations?user=6h7b0fAAAAAJ&hl=en'>Jennifer Dy</a>"
+              ]
+            }
           ]
-        }
-      ]
-    },
+        },
 
-    {
-      "id": "books",
-      "title": "books & tutorials",
-      "thumbnails": true,
-      "entries": [
         {
-          "id": "ai-from-first-principles",
-          "title": "AI from First Principles",
-          "links": { "read": "https://mrunalnshah.github.io/ai-from-first-principles/" }
+          "id": "gls",
+          "title": "GLS University",
+          "role": "B.Tech. in Computer Science & Engineering (AI/ML Specialization)",
+          "start": "2022-09",
+          "end": "2026-05",
+          "summary": "",
+          "details": [
+            {
+              "heading": "coursework,",
+              "text": "Semester 1",
+              "items": [
+                "222601101: Elementary Mathematics for Engineers",
+                "222601102: Computer Programming Paradigm",
+                "222601103: Computer Programming Laboratory",
+                "222601104: Computer Organization & Architecture",
+                "222601105: Practicals of Computer Organization & Architecture",
+                "222602101: Business Communication and Presentation Skills",
+                "222602102: Open Source Software",
+                "222602103: Environmental Studies"
+              ]
+            },
+            {
+              "text": "Semester 2",
+              "items": [
+                "222601201: Linear Algebra",
+                "222601202: Data Structures",
+                "222601203: Programming of Data Structures",
+                "222601204: Relational Database Management System",
+                "222601205: Programming of Relational Database Management System",
+                "222601206: Computer Networks",
+                "222602201: Elements of Indian History for Engineers",
+                "222602202: Universal Human Values and Value Education"
+              ]
+            },
+            {
+              "text": "Semester 3",
+              "items": [
+                "222601301: Discrete Mathematics",
+                "222601302: Object Oriented Computer Programming",
+                "222601303: Object Oriented Computer Programming Laboratory",
+                "222601304: Operating Systems",
+                "222601305: Linux Scripting",
+                "222601306: Design and Analysis of Algorithms",
+                "222601307: MOOC1 - Core Java",
+                "222602301: Economics for Engineers",
+                "222602302: Technical English"
+              ]
+            },
+            {
+              "text": "Semester 4",
+              "items": [
+                "222601401: Differential Equations and Multivariate Calculus",
+                "222601402: Formal Languages & Automata Theory",
+                "222601403: Microprocessors and Microcontroller",
+                "222601404: Scripting Languages",
+                "222601405: Practicals using Scripting Languages",
+                "222601406: Advanced Java",
+                "222601407: Programming in Advanced Java",
+                "222601408: Cryptography & Information Security"
+              ]
+            },
+            {
+              "text": "Semester 5",
+              "items": [
+                "222601501: Compiler Design",
+                "222601502: Structured & Object Oriented Analysis and Design",
+                "222601503: Probability and Statistics",
+                "222601504: Artificial Intelligence",
+                "222601505: Python Programming Laboratory",
+                "222601506: Capstone Project I",
+                "222604531: Digital Image and Video Processing",
+                "222604532: Digital Image and Video Processing Laboratory"
+              ]
+            },
+            {
+              "text": "Semester 6",
+              "items": [
+                "222601601: Blockchain Technology",
+                "222601602: Cloud Computing and Virtualization",
+                "222601603: Machine Learning",
+                "222601604: Machine Learning Laboratory",
+                "222601605: Mobile Application Development Laboratory",
+                "222601606: Capstone Project II",
+                "222604631: Recommender Systems",
+                "222604632: Recommender Systems Laboratory"
+              ]
+            },
+            {
+              "text": "Semester 7",
+              "items": [
+                "222601701: Software Engineering",
+                "222601702: Human Computer Interaction",
+                "222601703: Innovation, Start-up, & Entrepreneurship",
+                "222604731: Deep Learning",
+                "222604732: Natural Language Processing",
+                "222604733: Deep Learning Laboratory",
+                "222604734: Natural Language Processing Laboratory"
+              ]
+            },
+            {
+              "text": "Semester 8",
+              "items": [
+                "222601801: Industry Internship"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -39,28 +149,29 @@
       "thumbnails": true,
       "projectsPage": true,
       "entries": [
-        {
-          "id": "pneumonia-detection",
-          "group": "Medical Imaging",
-          "title": "Pneumonia detection from chest X-rays",
-          "role": "Bachelor's research",
-          "start": "TODO",
-          "end": "TODO",
-          "summary": "Computer vision for pneumonia detection from chest X-ray images, and two curated datasets.",
-          "details": [
-            { "heading": "the problem,", "text": "TODO" },
-            { "heading": "the datasets,", "text": "TODO" },
-            { "heading": "the model,", "text": "TODO" },
-            { "heading": "results,", "text": "TODO" }
-          ]
-        }
+        
       ]
     },
 
     {
       "id": "awards",
       "title": "awards & fellowships",
-      "entries": []
+      "entries": [
+        {
+          "id": "academic-excellence-scholarship",
+          "title": "Academic Excellence Scholarship",
+          "role": "Northeastern University",
+          "date": "2026-09",
+          "summary": "Awarded in recognition of academic achievement."
+        },
+        {
+          "id": "samsung-fellowship",
+          "title": "Samsung Fellowship (Grade 2), Cohort 7",
+          "role": "India Semiconductor Workforce Development Program",
+          "date": "2026-01",
+          "summary": "A merit-based fellowship for training in semiconductor chip design and manufacturing. In collaboration with IISc Bengaluru, Samsung Semiconductor India Research, and Synopsys."
+        }
+      ]
     },
 
     {
@@ -68,17 +179,77 @@
       "title": "experience",
       "entries": [
         {
+          "id": "ai-makerspace",
+          "title": "Northeastern University",
+          "role": "AI Makerspace Student Fellow (part-time)",
+          "location": "Boston, MA",
+          "start": "2026-10",
+          "summary": "Selected as one of the Student Fellows for Northeastern's AI Makerspace, the university-wide hub for AI learning and experimentation, developed in partnership with Microsoft.",
+          "quote": ""
+        },
+        {
           "id": "silver-touch",
           "title": "Silver Touch Technologies",
           "role": "AI/ML Engineer Intern",
-          "start": "TODO",
+          "location": "Ahmedabad, India",
+          "start": "2025-12",
           "end": "2026-05",
-          "summary": "AI models for user compliance and violation detection.",
+          "summary": "Compliance review means reading every clause by hand. I built a system that does the first pass: it checks a legal PDF against your rules, or flags risky clauses on its own with a trained model, and returns every violation highlighted, risk-scored, and explained.",
+          "quote": "Thank you, Mufid Kaladiya, for guiding every stage, and for the long hours we spent on the architecture, chasing accuracy through OCR, preprocessing and model fine-tuning. And thank you, Silver Touch, HR, and my GLS faculty and dean, for believing in me while I balanced college and work.",
           "details": [
-            { "heading": "what I worked on,", "text": "TODO" },
-            { "heading": "how,", "text": "TODO" },
-            { "heading": "results,", "text": "TODO" },
-            { "heading": "stack,", "text": "TODO" }
+            {
+              "heading": "situation,",
+              "text": "Compliance teams review policy and legal documents clause by clause, by hand. It's slow, it doesn't scale to long documents, and a single missed clause can carry real legal risk."
+            },
+            {
+              "heading": "task,",
+              "text": "Build the first pass of that review: a system that reads a legal PDF, checks it against the team's own rules, also catches risky clauses no rule mentions, and shows its reasoning so a reviewer can trust each flag. I owned it end to end, from data labeling and model training to API deployment."
+            },
+            {
+              "heading": "action,",
+              "text": "I built it as one pipeline: read the document, clean it, check every sentence two ways, then explain and report what it found.",
+              "image": "assets/cv/silver-touch/overview.svg",
+              "caption": "A simplified view of the system. Shaded boxes are models, dashed boxes are what the user provides. Internal documents, rules, and settings are left out."
+            },
+            {
+              "subheading": "reading and cleaning documents",
+              "text": "PDFs become structured text, with OCR for scanned pages, and every word keeps its position on the page so violations can be highlighted in the original. Then the text is cleaned and split into sentences:",
+              "image": "assets/cv/silver-touch/preprocessing.svg"
+            },
+            {
+              "subheading": "checking against your rules",
+              "text": "Each rule is written in JSON as a rule text and a risk factor. A two-stage matcher checks it: sBERT semantic retrieval shortlists the most relevant sentences (I compared it with SimCSE, and sBERT retrieved better), then DeBERTa-v3 NLI judges each one against the rule. A contradiction is a likely violation, and the risk score is its probability times the rule's risk factor.",
+              "image": "assets/cv/silver-touch/rule-matching.svg"
+            },
+            {
+              "subheading": "checking with no rules at all",
+              "text": "For risky clauses no rule mentions, I hand-labeled 2,000+ sentences and fine-tuned LegalBERT to sort each one into four severity classes.",
+              "image": "assets/cv/silver-touch/auto-detection.svg"
+            },
+            {
+              "subheading": "explaining and reporting",
+              "text": "A local LLM (Ollama) explains each violation in plain language, and optional add-ons flag risk words and numeric data such as amounts and percentages. I shipped it as a FastAPI service with a config-driven rule engine. Results come back as an annotated PDF, with each explanation attached as a comment, plus a structured report in a Streamlit interface."
+            },
+            {
+              "heading": "result,",
+              "items": [
+                "85% test accuracy for rule-based detection (sBERT + DeBERTa NLI)",
+                "75% test accuracy for auto-detection across 4 severity classes (LegalBERT)",
+                "preprocessing checked against a gold-standard set of 10 short legal documents (1–2 pages each): text extraction, cleaning, and sentence splitting",
+                "end-to-end detection checked on 1 large, full-length legal document",
+                "compliance teams can add new rules in config, without engineering support"
+              ]
+            },
+            {
+              "heading": "stack,",
+              "items": [
+                "language and training: Python, PyTorch",
+                "models: sBERT, DeBERTa-v3-base (NLI), LegalBERT",
+                "explanations: Ollama (local LLM)",
+                "text: OCR, NLTK",
+                "serving: FastAPI on uvicorn, Streamlit"
+              ]
+            }
           ]
         }
       ]
@@ -93,9 +264,46 @@
     },
 
     {
+      "id": "books",
+      "title": "books & tutorials",
+      "thumbnails": true,
+      "entries": [
+        {
+          "id": "ai-from-first-principles",
+          "title": "AI from First Principles",
+          "thumbnail": "assets/cv/ai-from-first-principles.svg",
+          "summary": "From the math to the model: build AI from scratch in Python and NumPy, then use the tools that make you fast.",
+          "links": { "read": "https://mrunalnshah.github.io/ai-from-first-principles/" }
+        }
+      ]
+    },
+
+    {
       "id": "community",
       "title": "community",
-      "entries": []
+      "entries": [
+        {
+          "id": "ai-from-first-principles",
+          "title": "AI from First Principles",
+          "role": "Author, open online book",
+          "summary": "Teaching AI from the math up toward foundation models. Each chapter pairs intuitive diagrams and equations with labs and modular code written from scratch with only Python and NumPy.",
+          "links": { "read": "https://mrunalnshah.github.io/ai-from-first-principles/" }
+        },
+        {
+          "id": "study-notes",
+          "title": "Open study notes",
+          "role": "",
+          "summary": "Published notes for Stanford Algorithms Specialization and DeepLearning.AI Mathematics for Machine Learning courses, earning 125+ GitHub stars from learners worldwide.",
+          "links": { "algorithms notes": "", "math for ML notes": "" }
+        },
+        {
+          "id": "kaggle-datasets",
+          "title": "Kaggle datasets",
+          "role": "Curator",
+          "summary": "Curated and published two standardized datasets, one for segmentation and one for detection, with 500+ downloads together.",
+          "links": { "segmentation dataset": "https://www.kaggle.com/datasets/mrunalnshah/crd-chest-x-ray-images-with-lung-segmented-masks", "detection dataset": "https://www.kaggle.com/datasets/mrunalnshah/pneumoniacxr-normal-pneumonia-noopacitynonormal" }
+        }
+      ]
     }
   ]
 }

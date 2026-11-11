@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="260" viewBox="0 0 700 260"
+     font-family="IBM Plex Mono, Consolas, monospace" font-size="12" fill="#111">
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#111" />
+    </marker>
+  </defs>
+  <rect x="102" y="10" width="594" height="240" fill="none" stroke="#888" stroke-dasharray="4 4" />
+  <text x="114" y="30" fill="#555" text-anchor="start">FastAPI service</text>
+  <rect x="10" y="102" width="80" height="56" fill="none" stroke="#111" stroke-dasharray="3 3" />
+  <text x="50.0" y="126.0" text-anchor="middle" font-weight="bold">PDF</text>
+  <text x="50.0" y="142.0" text-anchor="middle" fill="#555">upload</text>
+  <path d="M90 130 H113" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <path d="M114 130 L149 90 L184 130 L149 170 z" fill="none" stroke="#111" />
+  <text x="149" y="127" text-anchor="middle">text</text>
+  <text x="149" y="141" text-anchor="middle">layer?</text>
+  <rect x="208" y="40" width="100" height="56" fill="none" stroke="#111" />
+  <text x="258.0" y="64.0" text-anchor="middle" font-weight="bold">extract text</text>
+  <text x="258.0" y="80.0" text-anchor="middle" fill="#555">directly</text>
+  <rect x="208" y="164" width="100" height="56" fill="none" stroke="#111" />
+  <text x="258.0" y="188.0" text-anchor="middle" font-weight="bold">OCR engine</text>
+  <text x="258.0" y="204.0" text-anchor="middle" fill="#555">scanned pages</text>
+  <path d="M149 90 V68 H207" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <path d="M149 170 V192 H207" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <text x="155" y="82" fill="#555" text-anchor="start">yes</text>
+  <text x="155" y="186" fill="#555" text-anchor="start">no</text>
+  <rect x="332" y="102" width="100" height="56" fill="none" stroke="#111" />
+  <text x="382.0" y="126.0" text-anchor="middle" font-weight="bold">text +</text>
+  <text x="382.0" y="142.0" text-anchor="middle" fill="#555">coordinates</text>
+  <path d="M308 68 H320 V130 H331" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <path d="M308 192 H320 V130 H331" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <rect x="456" y="96" width="105" height="68" fill="#e6e1d6" stroke="#111" />
+  <text x="508.5" y="110.0" text-anchor="middle" font-weight="bold">rule engine</text>
+  <text x="508.5" y="126.0" text-anchor="middle" fill="#555">similarity,</text>
+  <text x="508.5" y="142.0" text-anchor="middle" fill="#555">NLI, and</text>
+  <text x="508.5" y="158.0" text-anchor="middle" fill="#555">explanations</text>
+  <path d="M432 130 H455" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <rect x="456" y="192" width="105" height="46" fill="none" stroke="#111" stroke-dasharray="3 3" />
+  <text x="508.5" y="211.0" text-anchor="middle" font-weight="bold">rules (JSON)</text>
+  <text x="508.5" y="227.0" text-anchor="middle" fill="#555">+ add-ons</text>
+  <path d="M508.5 192 V165" fill="none" stroke="#111" marker-end="url(#arrow)" />
+  <rect x="585" y="96" width="105" height="68" fill="none" stroke="#111" />
+  <text x="637.5" y="118.0" text-anchor="middle" font-weight="bold">annotated PDF</text>
+  <text x="637.5" y="134.0" text-anchor="middle" fill="#555">+ violation</text>
+  <text x="637.5" y="150.0" text-anchor="middle" fill="#555">report</text>
+  <path d="M561 130 H584" fill="none" stroke="#111" marker-end="url(#arrow)" />
+</svg>
