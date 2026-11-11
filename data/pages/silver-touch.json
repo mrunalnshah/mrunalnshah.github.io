@@ -38,7 +38,7 @@
       "85% test accuracy for rule-based detection (sBERT + DeBERTa NLI)",
       "75% test accuracy for auto-detection across 4 severity classes (LegalBERT)",
       "preprocessing checked against a gold-standard set of 10 short legal documents (1–2 pages each): text extraction, cleaning, and sentence splitting",
-      "end-to-end detection checked on 1 large, full-length legal document",
+      "end-to-end detection checked on 2 large, full-length legal document",
       "compliance teams can add new rules in config, without engineering support"
     ]
   },
