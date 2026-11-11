@@ -15,6 +15,8 @@
     ["AI from First Principles", "https://mrunalnshah.github.io/ai-from-first-principles/"],
     ["Blogs", "https://mrunalnshah.substack.com/"],
     ["Projects", "projects.html"],
+    ["GitHub", "https://github.com/mrunalnshah/"],
+    ["LinkedIn", "https://linkedin.com/in/mrunalnshah"],
     ["CV", "cv.html", "cv/"],
   ];
 
