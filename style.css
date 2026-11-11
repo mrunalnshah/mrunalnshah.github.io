@@ -31,7 +31,7 @@ a:hover {
   text-decoration-color: #111;
 }
 
-/* GitHub, LinkedIn, ...: a quiet line above the nav, drawn by nav.js */
+/* GitHub, LinkedIn, ...: a quiet line above the nav, drawn by js/nav.js */
 .social {
   text-align: right;
   font-size: 13px;
@@ -152,7 +152,7 @@ p {
   opacity: 1;
 }
 
-/* cv: cv.html and the entry pages in cv/, drawn by cv/cv.js */
+/* cv: cv.html, projects.html, and entry.html, drawn by js/cv.js */
 .cv-row {
   display: flex;
   flex-wrap: wrap;
@@ -234,7 +234,7 @@ p {
   display: block;
 }
 
-/* the top of an entry's own page */
+/* the top of an entry's page (entry.html) */
 .cv-back {
   margin-bottom: 24px;
 }

@@ -1,0 +1,14 @@
+{
+  "nav": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "AI from First Principles", "href": "https://mrunalnshah.github.io/ai-from-first-principles/" },
+    { "label": "Projects", "href": "projects.html" },
+    { "label": "CV", "href": "cv.html", "alsoCurrentOn": ["entry.html"] }
+  ],
+
+  "social": [
+    { "label": "GitHub", "href": "https://github.com/mrunalnshah/" },
+    { "label": "Substack", "href": "https://mrunalnshah.substack.com/" },
+    { "label": "LinkedIn", "href": "https://linkedin.com/in/mrunalnshah" }
+  ]
+}

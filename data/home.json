@@ -1,0 +1,19 @@
+{
+  "photo": { "src": "assets/prof_pic.jpg", "alt": "mrunal" },
+  "greeting": "bello globo,",
+  "name": "mrunalnshah",
+
+  "bio": "I read, code, listen, eat, and lose hours playing games. I'm the kind of person who gets obsessed with ideas, projects, late-night conversations, and anything that feels alive — anything with a little <span class='bang' tabindex='0'>BANG! <span class='bang-tooltip'> (qu)Bit, Atoms, Neurons, Genes</span></span> Treks, cold winds, long roads, and snowy mountains are my system reboot. I'm spiritual but in my own way, and just a normal fedora user. Let's talk about \"you\"! but before that, let me finish myself.",
+
+  "currently": [
+    "Master's student in Artificial Intelligence at <a href='https://www.northeastern.edu/'>Northeastern University</a>, with a focus on working with messy data, semantic model building, and multimodal architectures spanning Computer Vision, NLP, and Reinforcement Learning.",
+    "Recently completed an internship as an AI/ML Engineer Intern at Silver Touch Technologies, where I worked on AI models for user compliance and violation detection. During my bachelor's, I worked on computer vision for pneumonia detection from chest X-ray images and curated two datasets."
+  ],
+
+  "news": [
+    { "date": "2026-09-09", "text": "Started M.S. in AI at Northeastern University." },
+    { "date": "2026-05-15", "text": "Completed my internship as AI/ML Engineer Intern at Silver Touch." }
+  ],
+
+  "announcement": ""
+}

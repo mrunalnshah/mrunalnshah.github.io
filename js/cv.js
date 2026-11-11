@@ -1,24 +1,24 @@
-// Draws pages from `CV` in data.js. Load data.js first. Three kinds of page
-// use this script, and each is recognized by the element it provides:
+// Draws pages from data/cv.json. Needs js/data.js. Three kinds of page use
+// this script, and each is recognized by the element it provides:
 //
 //   cv.html, with <div id="cv">: the whole CV, every non-empty section.
 //   projects.html, with <div id="cv-projects">: featured entries, then the
 //     sections marked `projectsPage` as filterable galleries. Each part's
 //     id is its section id (or "featured"), so projects.html#research
 //     leads straight to it.
-//   cv/<section>/<id>.html, with <header id="cv-entry">: that entry's back
-//     links, photo, and facts. The page finds its entry from its own folder
-//     and file name, so a copied page only needs renaming.
+//   entry.html?section=<id>&id=<id>, with <div id="cv-entry">: one entry's
+//     own page, from its `details`. Lists link here for every entry that
+//     has details.
 //
-// Everything meant to be customized is in data.js; this file only draws it.
+// Everything meant to be customized is in data/cv.json; this file only
+// draws it.
 
 (function () {
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // The site root, found from this script's own place (cv/cv.js), so that
-  // paths written relative to the root in data.js work from any page.
-  const ROOT = new URL("..", document.currentScript.src).href;
+  // data/cv.json, set once it has loaded.
+  let CV;
 
   // "2026-09" -> "Sep 2026", "2024" -> "2024".
   function formatDate(date) {
@@ -53,26 +53,27 @@
     return html;
   }
 
-  // "[learn more →] [code] [paper]", in the style of projects.html.
+  // "[learn more →] [paper] [code]".
   function linksHTML(links, moreHref) {
     const items = [];
     if (moreHref) items.push(`[<a href="${moreHref}">learn more →</a>]`);
     for (const [label, href] of Object.entries(links || {})) {
-      items.push(`[<a href="${href}">${label}</a>]`);
+      items.push(`[<a href="${siteURL(href)}">${label}</a>]`);
     }
     return items.length ? `<p class="cv-meta">${items.join(" ")}</p>` : "";
   }
 
-  // The URL of an entry's own page, or null if it has none.
+  // The URL of an entry's own page, or null if it has no details.
   function pageURL(section, entry) {
-    return entry.page ? `${ROOT}cv/${section.id}/${entry.id}.html` : null;
+    if (!entry.details || entry.details.length === 0) return null;
+    return siteURL(`entry.html?section=${section.id}&id=${entry.id}`);
   }
 
   // The entry's thumbnail (or the default), linking to its page if it has one.
   // The default is marked cv-placeholder so it is fitted, not cropped, in
   // wide boxes.
   function imageHTML(section, entry, className) {
-    const src = ROOT + (entry.thumbnail || CV.defaultThumbnail);
+    const src = siteURL(entry.thumbnail || CV.defaultThumbnail);
     const classes = entry.thumbnail ? className : `${className} cv-placeholder`;
     const img = `<img class="${classes}" src="${src}" alt="" loading="lazy" />`;
     const page = pageURL(section, entry);
@@ -82,6 +83,25 @@
   function summaryHTML(entry) {
     return entry.summary ? `<p>${entry.summary}</p>` : "";
   }
+
+  // Sections that have something to show, optionally only those matching.
+  function sectionsWithEntries(keep = () => true) {
+    return CV.sections.filter((s) => keep(s) && s.entries && s.entries.length > 0);
+  }
+
+  // [[group, entries], ...]: groups in order of first appearance, entries in
+  // their listed order, and ungrouped entries first under the group "".
+  function groupEntries(entries) {
+    const groups = new Map([["", []]]);
+    for (const entry of entries) {
+      const group = entry.group || "";
+      if (!groups.has(group)) groups.set(group, []);
+      groups.get(group).push(entry);
+    }
+    return [...groups].filter(([, list]) => list.length > 0);
+  }
+
+  // ---- cv.html -----------------------------------------------------------
 
   // One entry on cv.html. In thumbnail sections it is laid out as
   // [thumbnail | text].
@@ -102,28 +122,14 @@
       </div>`;
   }
 
-  // [[group, entries], ...]: groups in order of first appearance, entries in
-  // their listed order, and ungrouped entries first under the group "".
-  function groupEntries(entries) {
-    const groups = new Map([["", []]]);
-    for (const entry of entries) {
-      const group = entry.group || "";
-      if (!groups.has(group)) groups.set(group, []);
-      groups.get(group).push(entry);
-    }
-    return [...groups].filter(([, list]) => list.length > 0);
-  }
-
   function renderCV(container) {
     let html = "";
 
     if (CV.pdf) {
-      html += `<p class="cv-meta">[<a href="${CV.pdf}">pdf</a>]</p>`;
+      html += `<p class="cv-meta">[<a href="${siteURL(CV.pdf)}">pdf</a>]</p>`;
     }
 
-    for (const section of CV.sections) {
-      if (!section.entries || section.entries.length === 0) continue;
-
+    for (const section of sectionsWithEntries()) {
       html += `<h3>${section.title},</h3>`;
       // Ungrouped entries are always shown; each group starts collapsed so
       // the page stays short, and readers open only what interests them.
@@ -141,14 +147,13 @@
     container.innerHTML = html;
   }
 
-  // projects.html: entries marked `featured` first, as large cards, then
-  // each section marked `projectsPage` as a gallery that can be filtered by
-  // group. "jump to" links at the top lead to each part, and each part can
-  // be hidden or shown by clicking its heading.
+  // ---- projects.html -----------------------------------------------------
+
+  // Featured entries first, as large cards, then each `projectsPage`
+  // section as a gallery that can be filtered by group. "jump to" links at
+  // the top lead to each part, and each part hides or shows from its heading.
   function renderProjects(container) {
-    const sections = CV.sections.filter(
-      (s) => s.projectsPage && s.entries && s.entries.length > 0
-    );
+    const sections = sectionsWithEntries((s) => s.projectsPage);
     const featured = sections.flatMap((s) =>
       s.entries.filter((e) => e.featured).map((e) => featureHTML(s, e))
     );
@@ -252,40 +257,69 @@
     }
   }
 
-  function renderEntryHeader(container) {
-    // .../cv/<section>/<id>.html
-    const [sectionId, file] = location.pathname.split("/").slice(-2);
-    const id = file.replace(/\.html$/, "");
+  // ---- entry.html --------------------------------------------------------
+
+  function renderEntry(container) {
+    const params = new URLSearchParams(location.search);
+    const sectionId = params.get("section");
+    const id = params.get("id");
     const section = CV.sections.find((s) => s.id === sectionId);
     const entry = section && (section.entries || []).find((e) => e.id === id);
 
     if (!entry) {
       container.innerHTML =
-        `<p>No entry "${id}" in section "${sectionId}" of cv/data.js. Add one, or rename this page or its folder to match.</p>`;
+        `<p>No entry "${id}" in section "${sectionId}" of data/cv.json.</p>` +
+        backLinksHTML(section || {});
       return;
     }
 
-    document.title = `${entry.title} | mrunalnshah`;
-    container.innerHTML =
-      backLinksHTML(section) +
-      (entry.thumbnail ? `<img class="cv-photo" src="${ROOT + entry.thumbnail}" alt="" />` : "") +
-      factsHTML(entry, "h2") +
-      linksHTML(entry.links);
+    document.title = `${entry.title} | ${document.title}`;
+    container.innerHTML = `
+      ${backLinksHTML(section)}
+      ${entry.thumbnail ? `<img class="cv-photo" src="${siteURL(entry.thumbnail)}" alt="" />` : ""}
+      ${factsHTML(entry, "h2")}
+      ${linksHTML(entry.links)}
+      <article class="cv-body">${detailsHTML(entry.details || [])}</article>`;
   }
 
   // "[← cv] [← projects]": back to every page that lists this entry.
   function backLinksHTML(section) {
-    const items = [`[<a href="${ROOT}cv.html">← cv</a>]`];
+    const items = [`[<a href="${siteURL("cv.html")}">← cv</a>]`];
     if (section.projectsPage) {
-      items.push(`[<a href="${ROOT}projects.html#${section.id}">← projects</a>]`);
+      items.push(`[<a href="${siteURL(`projects.html#${section.id}`)}">← projects</a>]`);
     }
     return `<p class="cv-meta cv-back">${items.join(" ")}</p>`;
   }
 
-  const cv = document.getElementById("cv");
-  const projects = document.getElementById("cv-projects");
-  const entryHeader = document.getElementById("cv-entry");
-  if (cv) renderCV(cv);
-  if (projects) renderProjects(projects);
-  if (entryHeader) renderEntryHeader(entryHeader);
+  // An entry's details: each block may have a heading, text (a paragraph or
+  // a list of them), items (a bulleted list), and an image with a caption,
+  // shown in that order.
+  function detailsHTML(details) {
+    return details.map((block) => {
+      const paragraphs = [].concat(block.text || []);
+      return [
+        block.heading ? `<h3>${block.heading}</h3>` : "",
+        ...paragraphs.map((p) => `<p>${p}</p>`),
+        block.items ? `<ul>${block.items.map((item) => `<li>${item}</li>`).join("")}</ul>` : "",
+        block.image ? `<img src="${siteURL(block.image)}" alt="${block.caption || ""}" />` : "",
+        block.caption ? `<p class="cv-meta">${block.caption}</p>` : "",
+      ].join("");
+    }).join("");
+  }
+
+  // ------------------------------------------------------------------------
+
+  const pages = [
+    ["cv", renderCV],
+    ["cv-projects", renderProjects],
+    ["cv-entry", renderEntry],
+  ];
+
+  loadData("cv").then((cv) => {
+    CV = cv;
+    for (const [id, render] of pages) {
+      const container = document.getElementById(id);
+      if (container) render(container);
+    }
+  });
 })();

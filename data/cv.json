@@ -1,0 +1,101 @@
+{
+  "pdf": "",
+  "defaultThumbnail": "assets/cv/default-thumbnail.svg",
+
+  "sections": [
+    {
+      "id": "education",
+      "title": "education",
+      "entries": [
+        {
+          "id": "northeastern",
+          "title": "Northeastern University",
+          "role": "M.S. in Artificial Intelligence",
+          "start": "2026-09",
+          "summary": "Focus on messy data, semantic model building, and multimodal architectures across Computer Vision, NLP, and Reinforcement Learning.",
+          "details": [
+            { "heading": "coursework,", "items": ["TODO"] }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "books",
+      "title": "books & tutorials",
+      "thumbnails": true,
+      "entries": [
+        {
+          "id": "ai-from-first-principles",
+          "title": "AI from First Principles",
+          "links": { "read": "https://mrunalnshah.github.io/ai-from-first-principles/" }
+        }
+      ]
+    },
+
+    {
+      "id": "research",
+      "title": "research",
+      "thumbnails": true,
+      "projectsPage": true,
+      "entries": [
+        {
+          "id": "pneumonia-detection",
+          "group": "Medical Imaging",
+          "title": "Pneumonia detection from chest X-rays",
+          "role": "Bachelor's research",
+          "start": "TODO",
+          "end": "TODO",
+          "summary": "Computer vision for pneumonia detection from chest X-ray images, and two curated datasets.",
+          "details": [
+            { "heading": "the problem,", "text": "TODO" },
+            { "heading": "the datasets,", "text": "TODO" },
+            { "heading": "the model,", "text": "TODO" },
+            { "heading": "results,", "text": "TODO" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "awards",
+      "title": "awards & fellowships",
+      "entries": []
+    },
+
+    {
+      "id": "experience",
+      "title": "experience",
+      "entries": [
+        {
+          "id": "silver-touch",
+          "title": "Silver Touch Technologies",
+          "role": "AI/ML Engineer Intern",
+          "start": "TODO",
+          "end": "2026-05",
+          "summary": "AI models for user compliance and violation detection.",
+          "details": [
+            { "heading": "what I worked on,", "text": "TODO" },
+            { "heading": "how,", "text": "TODO" },
+            { "heading": "results,", "text": "TODO" },
+            { "heading": "stack,", "text": "TODO" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "projects",
+      "title": "projects",
+      "thumbnails": true,
+      "projectsPage": true,
+      "entries": []
+    },
+
+    {
+      "id": "community",
+      "title": "community",
+      "entries": []
+    }
+  ]
+}
